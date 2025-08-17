@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>إعلان GigaPub</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <h2>🎬 إعلان GigaPub</h2>
+  <button id="showAd">▶️ شاهد الإعلان</button>
+
+  <!-- سكربت GigaPub -->
+  <script src="https://ad.gigapub.tech/script?id=1801"></script>
+
+  <script>
+    document.getElementById("showAd").addEventListener("click", () => {
+      if (window.showGiga) {
+        window.showGiga()
+          .then(() => {
+            alert("✅ الإعلان تم بنجاح!");
+            Telegram.WebApp.sendData("watched"); // يرجع للبوت
+          })
+          .catch((e) => {
+            alert("❌ خطأ أثناء تشغيل الإعلان");
+            console.error(e);
+          });
+      } else {
+        alert("⚠️ الإعلان غير متاح الآن");
+      }
+    });
+  </script>
+</body>
+</html>
